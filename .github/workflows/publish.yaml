@@ -51,10 +51,16 @@ jobs:
     permissions:
         contents: write
 
-    steps:    
+    steps:   
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v1
+        with:
+          name: release-openshift.yaml
+          path: manifests/release-openshift.yaml
+
       - name: Release K8s YAML
         id: release
         uses: softprops/action-gh-release@v2
         with:
-            files: manifests/release-openshift.yaml
-            tag_name: latest
+          files: manifests/release-openshift.yaml
+          tag_name: latest
