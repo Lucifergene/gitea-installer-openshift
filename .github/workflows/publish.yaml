@@ -56,5 +56,5 @@ jobs:
         id: release
         uses: softprops/action-gh-release@v2
         with:
-            files: release-openshift.yaml
+            files: ./release-openshift.yaml
             tag_name: latest
