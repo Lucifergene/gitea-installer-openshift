@@ -57,9 +57,13 @@ jobs:
       - uses: actions/download-artifact@v4
       - name: Display structure of downloaded files
         run: ls -R
+      - uses: actions/upload-artifact@v4
+        with:
+          name: release-openshift.yaml
+          path: ./manifests/release-openshift.yaml
       - name: Release K8s YAML
         id: release
         uses: softprops/action-gh-release@v2
         with:
-          files: /home/runner/work/${{ env.IMAGE_NAME }}/${{ env.IMAGE_NAME }}/manifests/release-openshift.yaml
+          files: ./manifests/release-openshift.yaml
           tag_name: latest
