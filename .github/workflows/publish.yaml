@@ -12,7 +12,7 @@ env:
   IMAGE_NAME: ${{ github.repository }}
 
 jobs:
-    
+
   build-and-push-image:
     runs-on: ubuntu-latest
     permissions:
@@ -57,3 +57,4 @@ jobs:
         uses: softprops/action-gh-release@v2
         with:
             files: release-openshift.yaml
+            tag_name: latest
