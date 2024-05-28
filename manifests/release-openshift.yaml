@@ -10,44 +10,28 @@ metadata:
   namespace: gitea
 ---
 apiVersion: rbac.authorization.k8s.io/v1
-kind: Role
+kind: ClusterRole
 metadata:
-  namespace: gitea
-  name: gitea-role
+  name: gitea-cluster-role
 rules:
-- apiGroups: [""]  # "" indicates the core API group
-  resources: ["pods", "pods/exec", "namespaces"]
-  verbs: ["create", "get", "list", "watch", "delete"]
-- apiGroups: ["apps.openshift.io"]
-  resources: ["deploymentconfigs"]
-  verbs: ["get", "list", "watch"]
-- apiGroups: ["rbac.authorization.k8s.io"]
-  resources: ["rolebindings", "roles"]
-  verbs: ["create", "get", "list", "watch"]
-- apiGroups: ["apps"]
-  resources: ["deployments"]
-  verbs: ["get", "list", "watch"]
-- apiGroups: ["batch"]
-  resources: ["jobs"]
-  verbs: ["create", "get", "list", "watch"]
-- apiGroups: ["helm.openshift.io"]
-  resources: ["helmreleases"]
-  verbs: ["create", "get", "list", "watch"]
-- apiGroups: ["networking.k8s.io"]
-  resources: ["networkpolicies"]
-  verbs: ["create", "get", "list", "watch"]
+  - verbs:
+      - '*'
+    apiGroups:
+      - '*'
+    resources:
+      - '*'
 ---
 apiVersion: rbac.authorization.k8s.io/v1
-kind: RoleBinding
+kind: ClusterRoleBinding
 metadata:
-  name: gitea-role-binding
+  name: gitea-cluster-role-binding
 subjects:
 - kind: ServiceAccount
   name: gitea-service-account
   namespace: gitea
 roleRef:
   kind: Role
-  name: gitea-role
+  name: gitea-cluster-role
   apiGroup: rbac.authorization.k8s.io
 ---
 apiVersion: batch/v1
