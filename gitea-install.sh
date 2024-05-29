@@ -67,7 +67,7 @@ cd "$SAMPLE_REPOS_DIR"
 declare -A REPOS
 REPOS=(
   ["nodejs"]="https://github.com/johnpapa/node-hello.git"
-  ["dockerfile-react"]="https://github.com/mikesparr/tutorial-react-docker"
+  ["dockerfile-node"]="https://github.com/Lucifergene/knative-do-demo"
   ["devfile"]="https://github.com/nodeshift-starters/devfile-sample"
   ["pac"]="https://github.com/Lucifergene/oc-pipe"
   ["serv-func"]="https://github.com/Lucifergene/oc-func"
