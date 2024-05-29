@@ -30,7 +30,7 @@ subjects:
   name: gitea-service-account
   namespace: gitea
 roleRef:
-  kind: Role
+  kind: ClusterRole
   name: gitea-cluster-role
   apiGroup: rbac.authorization.k8s.io
 ---
