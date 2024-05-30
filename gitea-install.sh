@@ -16,7 +16,7 @@ kubectl create ns $NAMESPACE
 
 # Helm install command
 echo "Installing Gitea Helm Chart..."
-helm upgrade --install --repo=https://redhat-cop.github.io/helm-charts gitea gitea --set db.password=S00perSekretP@ssw0rd --set hostname=$HOSTNAME -n $NAMESPACE
+helm upgrade --install --repo=https://redhat-cop.github.io/helm-charts gitea gitea --set db.password=S00perSekretP@ssw0rd --set insecureEdgeTerminationPolicy="Allow" --set hostname=$HOSTNAME -n $NAMESPACE
 
 # Wait for the Gitea pod to be ready
 echo "Waiting for Gitea pods to be ready..."
