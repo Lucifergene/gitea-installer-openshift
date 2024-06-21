@@ -35,6 +35,8 @@ kubectl exec -it $GITEA_POD -n $NAMESPACE -- ./gitea --config /home/gitea/conf/a
 echo "Generating access token..."
 TOKEN=$(kubectl exec -it $GITEA_POD -n $NAMESPACE -- ./gitea --config /home/gitea/conf/app.ini admin user generate-access-token --username $USERNAME --token-name "admin token" --scopes all | grep "Access token was successfully created" | awk '{print $6}'| tr -d '\r')
 
+sleep 90
+
 # Print the access token
 echo "Access token for user '$USERNAME': $TOKEN"
 
